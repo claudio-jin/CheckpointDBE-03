@@ -33,7 +33,7 @@ public class SetupBean {
 		ServletContext servletContext = (ServletContext) FacesContext
 											.getCurrentInstance()
 											.getExternalContext()
-											.getSession(true);
+											.getContext();
 		String path = servletContext.getRealPath("/");
 		
 		FileOutputStream out = 
