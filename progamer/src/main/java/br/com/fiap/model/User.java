@@ -1,15 +1,20 @@
 package br.com.fiap.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class User {
+public class User implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -18,6 +23,10 @@ public class User {
 	private String password;
 	private LocalDate birthday;
 	private String imagePath;
+	
+	//Implementando relacao
+	@OneToMany(mappedBy="user")
+	private List<Setup> setups;
 
 	public Long getId() {
 		return id;
@@ -65,6 +74,14 @@ public class User {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+	
+	public List<Setup> getSetups() {
+		return setups;
+	}
+
+	public void setSetups(List<Setup> setups) {
+		this.setups = setups;
 	}
 
 	@Override

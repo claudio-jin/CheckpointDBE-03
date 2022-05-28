@@ -18,7 +18,7 @@ import br.com.fiap.model.Setup;
 
 @Named
 @RequestScoped
-public class SetupBean {
+public class SetupBean{
 
 	private Setup setup = new Setup();
 	

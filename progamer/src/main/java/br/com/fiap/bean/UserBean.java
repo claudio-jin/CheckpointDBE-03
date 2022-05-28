@@ -29,11 +29,15 @@ public class UserBean {
 
 	private UploadedFile image;
 
+	//Metodo salvar
 	public String save() throws IOException {
-		
+		//Contexto servlet
 		ServletContext servletContext = (ServletContext) FacesContext
+											//Pega a instancia atual
 											.getCurrentInstance()
+											//Pega o contexto externo (web)
 											.getExternalContext()
+											//Pega o contexto
 											.getContext();
 		
 		String path = servletContext.getRealPath("/");
@@ -52,17 +56,9 @@ public class UserBean {
 		return "login?faces-redirect=true";
 	}
 
-//	public String save() {
-//
-//		dao.insert(user);
-//
-//		mostrarMensagem("Usuario cadastrado");
-//
-//		return "login?faces-redirect=true";
-//	}
-
 	private void mostrarMensagem(String msg) {
-		FacesContext.getCurrentInstance()
+		FacesContext
+			.getCurrentInstance()
 			.getExternalContext()
 			.getFlash()
 			.setKeepMessages(true);
